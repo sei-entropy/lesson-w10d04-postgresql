@@ -149,8 +149,8 @@ Postgres, and SQLite](https://www.digitalocean.com/community/tutorials/sqlite-vs
 <br>
 
 ## Lab: 10 min (watch this video and read this article:)
-###[SQL](https://www.khanacademy.org/computing/computer-programming/sql/sql-basics/v/welcome-to-sql)
-###[Postgres](https://www.postgresql.org/about)
+
+###[SQL](https://www.khanacademy.org/computing/computer-programming/sql/sql-basics/v/welcome-to-sql) ###[Postgres](https://www.postgresql.org/about)
 
 <br>
 
@@ -214,6 +214,7 @@ start postgres server
 sudo service postgresql start
 ```
 
+### Windows
 
 ```
 psql -c "UPDATE pg_database SET datistemplate=FALSE WHERE datname='template1';" &> /dev/null
@@ -238,7 +239,8 @@ install postgres gem for rails
 gem install pg
 ```
 
-### Mac: 
+### Mac:
+
 - http://postgresapp.com/
 - Download
 - Move it to `/Applications`
@@ -252,14 +254,17 @@ gem install pg
 - You should see an elephant icon in the menu bar at the top of your screen.
 
 ### Linux
+
 - `apt-get install postgresql-9.4`
 
 ### Windows
+
 - https://www.enterprisedb.com/thank-you-downloading-postgresql?anid=1257365
 - normal installation next next next
 - password `0000`
 
 ### All
+
 - Verify your installation, by running `psql` in your terminal. You should see:
 
 ```
