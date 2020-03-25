@@ -1,18 +1,16 @@
 -- Open up psql and create a sql_lab database if you haven't already done so. 
 -- If you already have a sql_lab database, no need to create it again.
 
+-- Write SQL commands under the prompts below, and run the file to get results.
+-- In case there is already a computers table, drop it
+DROP TABLE IF EXISTS computers;
+-- Create a computers table
 CREATE TABLE computers (
   id SERIAL PRIMARY KEY,
   make VARCHAR NOT NULL,
   model VARCHAR NOT NULL,
   cpu_speed INT NOT NULL
 );
--- Write SQL commands under the prompts below, and run the file to get results.
-
--- In case there is already a computers table, drop it
-
--- Create a computers table
-
 
 -- The table should have id, make, model, cpu_speed, memory_size,
 --  price, release_date, photo_url, storage_amount, number_usb_ports,
@@ -24,7 +22,7 @@ INSERT INTO computers (make, model, cpu_speed) VALUES ('Apple', 'MacBook', 10);
 
 
 -- Select all entries from the computers table
-
+SELECT * FROM computers ;
 
 -- HUNGRY FOR MORE? 
 -- Look at this afternoon's instructor notes and read on altering tables before attempting below
