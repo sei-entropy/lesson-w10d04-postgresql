@@ -16,7 +16,11 @@ SELECT title AS book_name FROM books JOIN authors ON books.publication_date > 19
 -- Find all books written before 1980 by authors not from the US.
 SELECT title AS book_name FROM books JOIN authors ON books.publication_date < 1980 AND authors.nationality != 'United States of America';
 -- Find all authors whose names start with 'J'.
-
+SELECT * FROM authors WHERE name LIKE 'J%';
 -- Find all books whose titles contain 'the'.
-
+ SELECT * FROM books WHERE title LIKE '%the%';
 -- Find all authors who have written books with that start with the letter 'N'.
+-- This to show author name and book title
+SELECT name , books.title FROM authors JOIN books ON books.title LIKE 'N%';  
+-- This to list authors name using group by
+SELECT name FROM authors JOIN books ON books.title LIKE 'N%' GROUP BY name;
