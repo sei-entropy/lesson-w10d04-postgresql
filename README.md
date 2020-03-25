@@ -3,6 +3,7 @@
 # PostGres - Up and Running
 
 ## Lesson Objectives tools
+
 1. Instantiate a new DB directory
 1. Connect to PostGres through CLI
 1. Create a Database
@@ -26,7 +27,7 @@ At it's simplest, a relational database is a mechanism to store and retrieve
 data in a tabular form.
 
 Spreadsheets are a good analogy. Individual sheets as tables and the whole
-spreadsheet as a database. 
+spreadsheet as a database.
 
 > Why is this important?
 
@@ -56,7 +57,7 @@ Sticking with our previous analogy a database server would map to Google Sheets.
 _(create, read, update and delete)_, SQL, HTTP, and Rails Controller action.
 
 | CRUD   | SQL    | HTTP   | action     |
-|:-------|:-------|:-------|:-----------|
+| :----- | :----- | :----- | :--------- |
 | Create | INSERT | POST   | create     |
 | Read   | SELECT | GET    | index/show |
 | Update | UPDATE | PATCH  | update     |
@@ -71,21 +72,24 @@ ACID defines a set of rules for database transactions. These rules are built-in 
 What does ACID stand for:
 
 **A - Atomicity**
-* All or nothing, if one part fails, the entire transaction fails
+
+- All or nothing, if one part fails, the entire transaction fails
 
 **C - Consistency**
-* Any valid transaction can only result in creating an equally valid state as defined by the various rules built by the programmer, constraints, cascades, etc. Transactions need to follow the rules inherent in the database and the validations on that data.
+
+- Any valid transaction can only result in creating an equally valid state as defined by the various rules built by the programmer, constraints, cascades, etc. Transactions need to follow the rules inherent in the database and the validations on that data.
 
 **I - Isolation**
-* Concurrent transactions will not result invalid data. Transaction results look as though Concurrent transactions were run serially (one after another).
+
+- Concurrent transactions will not result invalid data. Transaction results look as though Concurrent transactions were run serially (one after another).
 
 **D - Durability**
-* The durability property ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors. Once a change has been made, nothing but another transaction will change it.
 
+- The durability property ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors. Once a change has been made, nothing but another transaction will change it.
 
 <br>
 
-In PostgreSQL, reviews would be a seperate entity with a ```book_id``` column. A review belongs to a book, a book has many reviews.
+In PostgreSQL, reviews would be a seperate entity with a `book_id` column. A review belongs to a book, a book has many reviews.
 
 <br>
 
@@ -97,7 +101,7 @@ The most popular type of database is a **relational** database. How do they work
 
 ![SQL tables](https://i.imgur.com/HjwqS4R.jpg)
 
-*Tabular!*
+_Tabular!_
 
 **Data is stored in tables**
 
@@ -110,28 +114,24 @@ The most popular type of database is a **relational** database. How do they work
 
 - SQL is a database language used specifically for relational databases.
 - This is in contrast to non-relational databases (we've used Mongo) which is essentially Javascript
- 
+
 **Can relate data between tables**
 
-- Hence the name *relational* database.
+- Hence the name _relational_ database.
 - We can relate rows in the `books` table to rows in the `authors` table.
-- We use a `key` to do this, which is a field that is unique for each row in a table. 
+- We use a `key` to do this, which is a field that is unique for each row in a table.
 - The key is often represented using an `id`, which is a unique identifier for each entry in a table. We refer to this as a `primary_key`.
 - For example, to relate a book to an author we'd add a `foreign_key` field of `author_id` to our books table. The `author_id` would be the `primary_key` (or `id`) of the author the book belongs to.
 
 <br>
 
-
 ## Associations
-
-
 
 ![](https://i.imgur.com/stPn9lA.png)
 
-*via Rails Guides*
+_via Rails Guides_
 
 <br>
-
 
 ## Types of Relational Databases
 
@@ -148,6 +148,11 @@ Postgres, and SQLite](https://www.digitalocean.com/community/tutorials/sqlite-vs
 
 <br>
 
+## Lab: 10 min (watch this video and read this article:)
+###[SQL](https://www.khanacademy.org/computing/computer-programming/sql/sql-basics/v/welcome-to-sql)
+###[Postgres](https://www.postgresql.org/about)
+
+<br>
 
 ## Postgres Install + Troubleshoooting
 
@@ -159,43 +164,56 @@ Postgres, and SQLite](https://www.digitalocean.com/community/tutorials/sqlite-vs
 ### Mac
 
 Install postgres via homebrew
+
 ```
 brew install postgres
 ```
+
 Start postgres
+
 ```
 brew services start postgres
 ```
+
 wait a few seconds to allow the service to start
+
 ```
 sleep 3s
 ```
+
 create database with current system username `whoami`
-```  
+
+```
 createdb
 ```
 
 ### Ubuntu
 
 install postgres and build dependency
+
 ```
 sudo apt-get install -y postgresql libpq-dev
 ```
-create user in postgres with name of current  system user
+
+create user in postgres with name of current system user
+
 ```
 sudo -u postgres createuser "$(whoami)" -s
 ```
-create database with name of current system 
+
+create database with name of current system
 user
-```  
+
+```
 sudo -u postgres createdb "$(whoami)"
 ```
+
 start postgres server
+
 ```
 sudo service postgresql start
 ```
 
-### Windows
 
 ```
 psql -c "UPDATE pg_database SET datistemplate=FALSE WHERE datname='template1';" &> /dev/null
@@ -207,33 +225,42 @@ psql -c "VACUUM FREEZE;" &> /dev/null
 ```
 
 ### Everyone
+
 Resource bashrc
+
 ```
 source ~/.bashrc
 ```
 
 install postgres gem for rails
+
 ```
 gem install pg
 ```
 
-
-- Mac: http://postgresapp.com/
+### Mac: 
+- http://postgresapp.com/
 - Download
 - Move it to `/Applications`
 - We want to use it from the command line, so we add it to the search path.
   - `$ atom ~/.bash_profile`
   - Add this line:
- `export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin`
- - save and close.
- - Update your terminal.
+    `export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin`
+- save and close.
+- Update your terminal.
 - Then open the app and click "Open psql"
 - You should see an elephant icon in the menu bar at the top of your screen.
-    
-- Linux
+
+### Linux
 - `apt-get install postgresql-9.4`
-- All
-- Verify your installation, by running `psql` in your terminal.  You should see:
+
+### Windows
+- https://www.enterprisedb.com/thank-you-downloading-postgresql?anid=1257365
+- normal installation next next next
+- password `0000`
+
+### All
+- Verify your installation, by running `psql` in your terminal. You should see:
 
 ```
 $ psql
@@ -241,9 +268,7 @@ psql (9.4.4)
 Type "help" for help.
 
 matt=#
-```  
-
-
+```
 
 ## Trouble Shooting
 
@@ -260,42 +285,45 @@ psql: could not connect to server: No such file or directory
 
 ### Cannot start PostgreSQL
 
-* Symptoms:
-    - PostgreSQL not running and launchctl fails with the following error:
+- Symptoms:
+  - PostgreSQL not running and launchctl fails with the following error:
 
 > postgresql.plist: Operation already in progress
 
-* Solution:
-    - view the PostgreSQL Server logs for potential errors:
-      `subl /usr/local/var/postgres/server.log`
-    - Google the last error and fix
-    - One solution I found:
-      `rm -rf /usr/local/var/postgres && initdb /usr/local/var/postgres`
-    - Also may need to manually delete the pid file:
-      `rm /usr/local/var/postgres/postmaster.pid`
+- Solution:
 
-* References:
-    - https://github.com/Homebrew/homebrew/issues/35240
-    - http://stackoverflow.com/questions/24379373/how-to-upgrade-postgres-from-9-3-to-9-4-without-losing-data
+  - view the PostgreSQL Server logs for potential errors:
+    `subl /usr/local/var/postgres/server.log`
+  - Google the last error and fix
+  - One solution I found:
+    `rm -rf /usr/local/var/postgres && initdb /usr/local/var/postgres`
+  - Also may need to manually delete the pid file:
+    `rm /usr/local/var/postgres/postmaster.pid`
+
+- References:
+  - https://github.com/Homebrew/homebrew/issues/35240
+  - http://stackoverflow.com/questions/24379373/how-to-upgrade-postgres-from-9-3-to-9-4-without-losing-data
 
 ### Cannot start psql
 
-* Symptoms:
-    - psql: FATAL:  database "<user>" does not exist
+- Symptoms:
 
-* Solution:
-    - Run createdb with no arguments to create a default database:
-      `createdb`
+  - psql: FATAL: database "<user>" does not exist
+
+- Solution:
+  - Run createdb with no arguments to create a default database:
+    `createdb`
 
 ### Cannot create a database
 
-* Symptoms:
-    - $ createdb  hangs / never returns
+- Symptoms:
 
-* Solution:
-    - Mac OSX upgrades are known to remove empty directories under /usr/local/var which causes
-      problems for PostgreSQL installations
-    - To fix, run the following statements from the `bash` shell:
+  - \$ createdb hangs / never returns
+
+- Solution:
+  - Mac OSX upgrades are known to remove empty directories under /usr/local/var which causes
+    problems for PostgreSQL installations
+  - To fix, run the following statements from the `bash` shell:
 
 ```
 mkdir -p /usr/local/var/postgres/{pg_tblspc,pg_twophase,pg_stat_tmp}/
@@ -327,13 +355,12 @@ test1=# \q         # quit
 
 ## Where's all this data stored, anyway?
 
-- Look in PostgresApp preferences.  You should see `~/Library/Application\ Support/Postgres/var-9.4`.  Let's take a look in there.
+- Look in PostgresApp preferences. You should see `~/Library/Application\ Support/Postgres/var-9.4`. Let's take a look in there.
 - We see `postgres-server.log`
 - Check out a file within `global/`. What is THAT?
   - This is binary (not text) data, spread out across multiple files
 - [More info](http://www.postgresql.org/docs/9.0/static/storage-file-layout.html)
 
-	
 </details>
 
 <br>
@@ -360,7 +387,7 @@ postgres -D /usr/local/var/postgres/
 If using the OSX app that https://www.postgresql.org/ provides, you can list sub dbs from the terminal:
 
 ```sql
-psql -l -- list all subdatabses 
+psql -l -- list all subdatabses
 psql db_name -- start psql app, using the sub database db_name
 ```
 
@@ -400,8 +427,8 @@ Postgres has the following data types:
 
 ## Create a table
 
-- Instead of collections, we have tables, which are just like a spreadsheet, or grid.  Rows are entries, and columns are properties of each row.
-- Unlike MongoDB, you have to tell Postgres, what data type each column is.  It's very 'strict'
+- Instead of collections, we have tables, which are just like a spreadsheet, or grid. Rows are entries, and columns are properties of each row.
+- Unlike MongoDB, you have to tell Postgres, what data type each column is. It's very 'strict'
 
 ```sql
 CREATE TABLE foo ( name varchar(20) ); -- create a table called 'foo' with one column called 'name' which is a small text column
@@ -529,7 +556,7 @@ Before running the below commands...
 - Create a `companies` table with `id` and `name`
 - Add `employer_id` to the `people` table
 
-<br> 
+<br>
 
 ```sql
 SELECT * FROM people CROSS JOIN companies;
@@ -620,7 +647,7 @@ the case in the real world.)
 ![one_to_many](https://i.imgur.com/MKde2sH.png)
 
 <br>
-
+x
 ## WE DO
 
 Describe the following relationships. Which table would contain the foreign key?
@@ -632,6 +659,7 @@ Describe the following relationships. Which table would contain the foreign key?
 <br>
 
 ## Joins
+
 To SELECT information on two or more tables at ones, we can use a JOIN clause.
 This will produce rows that contain information from both tables. When JOINing
 two or more tables, we have to tell the database how to 'match up' the rows.
@@ -679,34 +707,29 @@ you're really curious, check out this article:
 
 <br>
 
-## You Do: Books and Authors
+## Homework: Books and Authors
 
-See advanced_queries.sql in the [sql-library-lab](./sql-library-lab) exercise.
+See advanced_queries.sql in the [sql-library-lab](./ex) exercise.
 
 <br>
 
 ## References and links
 
-* [SQL vs NoSQL](http://dataconomy.com/sql-vs-nosql-need-know/)
-* [To SQL or NoSQL? That’s the database question](http://arstechnica.com/information-technology/2016/03/to-sql-or-nosql-thats-the-database-question/)
-* [SQLite vs MySQL vs PostgresQL](https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems)
-* [A beginners guide to SQL](http://www.sohamkamani.com/blog/2016/07/07/a-beginners-guide-to-sql/)
-* [Khan Academy: Intro to SQL](https://www.khanacademy.org/computing/computer-programming/sql)
-* [SQL Zoo](http://sqlzoo.net/)
-* http://sqlfiddle.com/#!15/35773/1
-* https://pgexercises.com/
-* https://www.sqlteaching.com/#!select
-* https://sqlbolt.com/lesson/select_queries_introduction
+- [SQL vs NoSQL](http://dataconomy.com/sql-vs-nosql-need-know/)
+- [To SQL or NoSQL? That’s the database question](http://arstechnica.com/information-technology/2016/03/to-sql-or-nosql-thats-the-database-question/)
+- [SQLite vs MySQL vs PostgresQL](https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems)
+- [A beginners guide to SQL](http://www.sohamkamani.com/blog/2016/07/07/a-beginners-guide-to-sql/)
+- [Khan Academy: Intro to SQL](https://www.khanacademy.org/computing/computer-programming/sql)
+- [SQL Zoo](http://sqlzoo.net/)
+- http://sqlfiddle.com/#!15/35773/1
+- https://pgexercises.com/
+- https://www.sqlteaching.com/#!select
+- https://sqlbolt.com/lesson/select_queries_introduction
 
 ## Sample Quiz Questions
 
-* What is an ERD and why would we use one?
-* What is the distinctive feature of a relational database?
-* How is information stored in a relational database?
-* What are the different types of relations that exist in a relational database?
-* How do we indicate a one-to-many relationship in a database?
-
-## Screencasts:
-
-- WDI7 (Matt Scilipoti): [Part 1](https://youtu.be/cuPXKDMEhKw), [Part 2](https://youtu.be/wQtBDerdyKw)
-- ERDs WDI7 (Matt Scilipoti): https://youtu.be/IDnOMi9jHgo
+- What is an ERD and why would we use one?
+- What is the distinctive feature of a relational database?
+- How is information stored in a relational database?
+- What are the different types of relations that exist in a relational database?
+- How do we indicate a one-to-many relationship in a database?
