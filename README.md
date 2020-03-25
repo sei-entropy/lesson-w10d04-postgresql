@@ -257,9 +257,11 @@ gem install pg
 
 - `apt-get install postgresql-9.4`
 
-### Windows
+### Windows (Additional)
 
-- https://www.enterprisedb.com/thank-you-downloading-postgresql?anid=1257365
+- https://www.microfocus.com/documentation/idol/IDOL_12_0/MediaServer/Guides/html/English/Content/Getting_Started/Configure/_TRN_Set_up_PostgreSQL.htm
+- v 9.5.21
+- https://www.enterprisedb.com/thank-you-downloading-postgresql?anid=1257380
 - normal installation next next next
 - password `0000`
 
@@ -269,6 +271,14 @@ gem install pg
 
 ```
 $ psql
+psql (9.4.4)
+Type "help" for help.
+
+matt=#
+```
+
+```
+$ psql -V
 psql (9.4.4)
 Type "help" for help.
 
@@ -492,8 +502,8 @@ DELETE FROM users WHERE id = 1; -- delete all rows from the users table that hav
 
 ## LABTIME
 
-- [sql-library-lab](./sql-library-lab)
-- [sql-computers-lab](./sql-computers-lab)
+- [sql-library-lab](./exercises/sql-library-lab)
+- [sql-computers-lab](./exercises/sql-computers-lab)
 
 <br>
 
