@@ -150,7 +150,9 @@ Postgres, and SQLite](https://www.digitalocean.com/community/tutorials/sqlite-vs
 
 ## Lab: 10 min (watch this video and read this article:)
 
-###[SQL](https://www.khanacademy.org/computing/computer-programming/sql/sql-basics/v/welcome-to-sql) ###[Postgres](https://www.postgresql.org/about)
+###[SQL](https://www.khanacademy.org/computing/computer-programming/sql/sql-basics/v/welcome-to-sql)
+
+###[Postgres](https://www.postgresql.org/about)
 
 <br>
 
@@ -724,7 +726,7 @@ you're really curious, check out this article:
 
 ## Homework: Books and Authors
 
-See advanced_queries.sql in the [sql-library-lab](./ex) exercise.
+See exercise in the [sql-library-lab](./exercises/sql-library-lab) exercise.
 
 <br>
 
