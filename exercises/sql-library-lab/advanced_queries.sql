@@ -2,21 +2,22 @@
 -- For all of these queries, you SHOULD NOT use an id # in a WHERE clause
 
 -- Find all fields (book and author related) for all books written by George R.R. Martin.
-
+-- SELECT * FROM books AS b JOIN authors AS a ON b.author_id =a.id WHERE a.name = 'George R.R. Martin' ;
 -- Find all fields (book and author related) for all books written by Milan Kundera.
-
+-- SELECT * FROM books AS b JOIN authors AS a on b.author_id = a.id WHERE a.name ='Milan Kundera';
 -- Find all books written by an author from China or the UK.
-
+-- SELECT * FROM books AS b JOIN authors AS a on b.author_id = a.id WHERE a.nationality = 'China' OR a.nationality = 'UK'; 
 -- Find out how many books Albert Camus wrote.
-
+-- SELECT SUM(id) FROM authors WHERE name = 'Albert Camus' ;
 -- Find out how many books were written by US authors.
-
+-- SELECT SUM(id) FROM authors WHERE nationality= 'United States of America';
 -- Find all books written after 1930 by authors from Argentina.
-
+-- SELECT * FROM books AS b JOIN authors AS a on b.author_id = a.id WHERE b. publication_date >= 1930 AND a.nationality = 'United States of America';
 -- Find all books written before 1980 by authors not from the US.
-
+--  SELECT * FROM books AS b JOIN authors AS a on b.author_id = a.id WHERE b. publication_date <= 1980 AND a.nationality != 'United States of America';
 -- Find all authors whose names start with 'J'.
-
+-- SELECT * FROM authors WHERE name LIKE '%J';
 -- Find all books whose titles contain 'the'.
-
+-- SELECT * FROM books WHERE title LIKE '%the%';
 -- Find all authors who have written books with that start with the letter 'N'.
+--  SELECT * FROM books AS b JOIN authors AS a ON b.author_id =a.id WHERE b.title ='%N%' ;
