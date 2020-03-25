@@ -2,7 +2,7 @@
 -- Unless otherwise stated, all queries should return all columns
 
 -- Get all information about all authors
--- SELECT * FROM authors;
+SELECT * FROM authors;
  id |        name        |       nationality        | birth_year 
 ----+--------------------+--------------------------+------------
   1 | Cao Xueqin         | China                    |       1715
@@ -16,7 +16,7 @@
 (8 rows)
 
 -- Get just the name and birth year of all authors
--- SELECT name, birth_year  FROM authors;
+SELECT name, birth_year  FROM authors;
         name        | birth_year 
 --------------------+------------
  Cao Xueqin         |       1715
@@ -30,7 +30,7 @@
 (8 rows)
 
 -- Get all authors born in the 20th centruy or later
--- SELECT name, birth_year  FROM authors WHERE birth_year <=2000 ;
+SELECT name, birth_year  FROM authors WHERE birth_year <=2000 ;
 
         name        | birth_year 
 --------------------+------------
@@ -45,7 +45,7 @@
 (8 rows)
 
 -- Get all authors born in the USA
--- SELECT *  FROM authors WHERE nationality ='United States of America';
+SELECT *  FROM authors WHERE nationality ='United States of America';
  id |        name        |       nationality        | birth_year 
 ----+--------------------+--------------------------+------------
   3 | James Baldwin      | United States of America |       1924
@@ -55,7 +55,7 @@
 -- Get all books published on 1985
 
 -- Get all books published before 1989
--- library=# SELECT * FROM books WHERE publication_date < 1989;
+ SELECT * FROM books WHERE publication_date < 1989;
  id |                      title                       | publication_date | author_id 
 ----+--------------------------------------------------+------------------+-----------
   1 | Dream of the Red Chamber                         |             1750 |         1
@@ -99,7 +99,7 @@
 (38 rows)
 
 -- Get just the title of all books.
---  SELECT title FROM books;
+ SELECT title FROM books;
                       title                       
 --------------------------------------------------
  Dream of the Red Chamber
@@ -174,7 +174,7 @@
 
 -- Get just the year that 'A Dance with Dragons' was published
   -- Cry when you realize how long it's been
- -- SELECT  publication_date  FROM books WHERE  title = 'A Dance with Dragons';
+ SELECT  publication_date  FROM books WHERE  title = 'A Dance with Dragons';
  publication_date 
 ------------------
              2011
@@ -182,7 +182,7 @@
 
 
 -- Get all books which have `the` somewhere in their title (hint, look up LIKE/ILIKE)
--- SELECT *  FROM books WHERE  title LIKE '%the%';
+SELECT *  FROM books WHERE  title LIKE '%the%';
  id |                   title                   | publication_date | author_id 
 ----+-------------------------------------------+------------------+-----------
   1 | Dream of the Red Chamber                  |             1750 |         1
@@ -207,23 +207,23 @@
  68 | I Swear the Dragons are Coming Soon       |             2014 |         8
 (20 rows)
 -- Add yourself as an author
--- INSERT INTO authors(name, nationality, birth_year) VALUES ('AFnan Basudan', 'Saudi Arabia', 2020);
+INSERT INTO authors(name, nationality, birth_year) VALUES ('AFnan Basudan', 'Saudi Arabia', 2020);
 INSERT 0 1
 
 -- Add two books that you'd like to write (you can hard-code your id as the author id)
--- INSERT INTO books(title, publication_date, author_id) VALUES ('a', 2020,10);
+INSERT INTO books(title, publication_date, author_id) VALUES ('a', 2020,10);
 INSERT 0 1
--- INSERT INTO books(title, publication_date, author_id) VALUES ('b', 2020,10);
+INSERT INTO books(title, publication_date, author_id) VALUES ('b', 2020,10);
 INSERT 0 1
 
 -- Update one of your books to have a new title
---  UPDATE books SET title='anything' WHERE title='b';
+ UPDATE books SET title='anything' WHERE title='b';
 UPDATE 1
 
 -- Delete your books
--- DELETE FROM books WHERE author_id=10;
+DELETE FROM books WHERE author_id=10;
 DELETE 2
 
 -- Delete your author entry
--- DELETE FROM authors WHERE id=10;
+DELETE FROM authors WHERE id=10;
 DELETE 1
